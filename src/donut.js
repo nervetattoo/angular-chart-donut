@@ -6,12 +6,12 @@
 //   </g>
 // </svg>
 
-angular.module('nervetattoo.d3.donut').directive('donutChart', function() {
+angular.module('ng.donut-chart', []).directive('donutChart', function() {
     'use strict';
     return {
         restrict: 'EA',
         scope: {
-            data: '@',
+            data: '=',
             title: '@',
             color: '@',
             size: '@',
@@ -20,7 +20,6 @@ angular.module('nervetattoo.d3.donut').directive('donutChart', function() {
         link: function(scope, element, attrs) {
             var symbol = attrs.symbol || '%';
             var size = attrs.size || element[0].clientWidth;
-            if (size > 150) size = 150;
             var color = attrs.color || '5a8e2f';
             var ringSize = size / 20;
 
@@ -35,7 +34,9 @@ angular.module('nervetattoo.d3.donut').directive('donutChart', function() {
                 return 'translate('+x+','+y+')';
             };
 
-            var d3 = window.d3;
+            if (typeof d3 !== 'object') {
+                throw new Error("ng.donut-chart requires a global d3 object");
+            }
             var scale = d3.scale.linear().domain([0, 100]).range([0, 2 * Math.PI]);
 
             var transformDown = (size / 4) + ringSize + 1;
@@ -136,6 +137,8 @@ angular.module('nervetattoo.d3.donut').directive('donutChart', function() {
                     };
                 });
             };
+
+            scope.$digest();
 
             scope.render = function(data, tweenTime) {
                 path.transition()

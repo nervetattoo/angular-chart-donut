@@ -1,14 +1,19 @@
 {
-  "name": "ng-d3-donut",
+  "name": "angular.donut-chart",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no ng-d3-donuttest specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Raymond Julin <raymond.julin@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "gulp": "^3.6.0"
+  },
+  "devDependencies": {
+    "karma": "^0.12.5",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4"
   }
 }
