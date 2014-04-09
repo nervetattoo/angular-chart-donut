@@ -6,7 +6,17 @@
 //   </g>
 // </svg>
 
-angular.module('ng.donut-chart', []).directive('donutChart', function() {
+angular.module('ng.donut-chart', [])
+
+.constant('donutChartConfig', {
+    pathColor: '5a8e2f',
+    strokeColor: '#a39d8c',
+    bgFillColor: '#f2f0d6',
+    punchoutFillColor: '#f1e0af',
+    punchoutStrokeColor: '#d2c194'
+})
+
+.directive('donutChart', ['donutChartConfig', function(donutChartConfig) {
     'use strict';
     return {
         restrict: 'EA',
@@ -20,14 +30,8 @@ angular.module('ng.donut-chart', []).directive('donutChart', function() {
         link: function(scope, element, attrs) {
             var symbol = attrs.symbol || '%';
             var size = attrs.size || element[0].clientWidth;
-            var color = attrs.color || '5a8e2f';
+            var color = attrs.color || donutChartConfig.pathColor;
             var ringSize = size / 20;
-
-            var strokeColor = '#a39d8c';
-            var bgFillColor = '#f2f0d6';
-            var punchoutFillColor = '#f1e0af';
-            var punchoutStrokeColor = '#d2c194';
-
             var outer = size / 4;
 
             var transform = function(x, y) {
@@ -65,10 +69,10 @@ angular.module('ng.donut-chart', []).directive('donutChart', function() {
 
             var background = svg.append('circle').attr({
                 'class': 'background',
-                fill: bgFillColor,
-                stroke: strokeColor,
-                r: outerBounds,
-                transform: centerTransform
+                fill: donutChartConfig.bgFillColor,
+                stroke: donutChartConfig.strokeColor,
+                r: donutChartConfig.outerBounds,
+                transform: donutChartConfig.centerTransform
             });
 
             var middleLayer = svg.append('g').attr({transform: centerTransform});
@@ -76,8 +80,8 @@ angular.module('ng.donut-chart', []).directive('donutChart', function() {
 
             var punchOut = middleLayer.append('path').attr({
                 'class': 'punch-out',
-                fill: punchoutFillColor,
-                stroke: punchoutStrokeColor,
+                fill: donutChartConfig.punchoutFillColor,
+                stroke: donutChartConfig.punchoutStrokeColor,
                 d: drawArc(outer - ringSize, outer, 0, 100)
             });
 
@@ -93,10 +97,10 @@ angular.module('ng.donut-chart', []).directive('donutChart', function() {
                     y1: outerBounds,
                     x2: 0,
                     y2: cy,
-                    stroke: strokeColor
+                    stroke: donutChartConfig.strokeColor
                 });
                 dropPin.append('circle').attr({
-                    fill: strokeColor,
+                    fill: donutChartConfig.strokeColor,
                     cx: 0,
                     cy: cy,
                     r: r
@@ -109,7 +113,7 @@ angular.module('ng.donut-chart', []).directive('donutChart', function() {
             }
 
             topLayer.append('circle').attr({
-                fill: bgFillColor,
+                fill: donutChartConfig.bgFillColor,
                 stroke: '#f9f9ec',
                 r: outer - ringSize
             });
@@ -156,4 +160,4 @@ angular.module('ng.donut-chart', []).directive('donutChart', function() {
             if (scope.data) scope.render(scope.data, 250);
         }
     };
-});
+}]);
