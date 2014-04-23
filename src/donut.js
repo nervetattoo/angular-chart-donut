@@ -142,8 +142,6 @@ angular.module('ng.donut-chart', [])
                 });
             };
 
-            scope.$digest();
-
             scope.render = function(data, tweenTime) {
                 path.transition()
                     .duration(tweenTime || 750)
