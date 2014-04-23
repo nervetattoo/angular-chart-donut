@@ -29,15 +29,14 @@ describe('ng.donut-chart', function() {
                 'circle': 3 // bg, drop-pin, inner
             };
             var svg = angular.element(el.find('svg'));
+
+            expect(svg.css('height')).toBe('150px');
+            expect(svg.css('width')).toBe('92px');
+
             var key;
             for (selector in shouldHaveOneOf) {
                 expect(svg.find(selector).length).toBe(shouldHaveOneOf[selector]);
             }
-        });
-
-        it('should represent percentage correctly', function() {
-            // Figure out if path elem has the correct "length"
-            console.log(el.html());
         });
     });
 });
