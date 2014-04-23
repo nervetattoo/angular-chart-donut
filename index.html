@@ -10,6 +10,10 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script src="/bower_components/d3/d3.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="/javascripts/donut.js"></script>
     <title>Angular donut-chart by nervetattoo</title>
   </head>
 
@@ -32,9 +36,20 @@
 
         <section id="main_content">
           <h2>
-<a name="angular-donut-chart" class="anchor" href="#angular-donut-chart"><span class="octicon octicon-link"></span></a>Angular donut-chart</h2>
+              <a name="angular-donut-chart" class="anchor" href="#angular-donut-chart"><span class="octicon octicon-link"></span></a>Angular donut-chart
+          </h2>
 
-<p>A simple <code>&lt;donut-chart&gt;</code> directive for Angular built with D3.js</p>
+          <p>A simple <code>&lt;donut-chart&gt;</code> directive for Angular built with D3.js</p>
+
+          <h3>Demo</h3>
+          <div ng-app="DemoApp" ng-controller="DemoCtrl">
+            <style scoped>
+            </style>
+            <donut-chart title="Demo" data="data" size=250></donut-chart>
+            <pre><code>
+              &lt;donut-chart title="Demo" data="{{data}}" size=250&gt;
+            </code></pre>
+          </div>
         </section>
 
         <footer>
@@ -45,5 +60,26 @@
         
       </div>
     </div>
+    <script>
+      angular
+        .module('DemoApp', ['ng.donut-chart'])
+        .controller('DemoCtrl', function($scope, $window) {
+          $scope.data = 10;
+          var last;
+          var step = function step(timestamp) {
+            if (!last) last = timestamp;
+            var progress = timestamp - last;
+            if (progress > 2500) {
+              last = timestamp;
+              $scope.$apply(function() {
+              $scope.data = Math.round(Math.random() * 100);
+            });
+              console.log($scope.data);
+            }
+            $window.requestAnimationFrame(step);
+          };
+          $window.requestAnimationFrame(step);
+        });
+    </script>
   </body>
 </html>
