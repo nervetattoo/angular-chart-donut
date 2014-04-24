@@ -1,5 +1,7 @@
 ## [Angular donut-chart](https://nervetattoo.github.io/angular-chart-donut)
 
+A simple donut chart for Angular built on d3
+
 * `bower install angular-chart-donut`
 * `npm install angular-chart-donut`
 
