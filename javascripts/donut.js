@@ -6,7 +6,11 @@
 //   </g>
 // </svg>
 
+<<<<<<< HEAD
 angular.module('chart.donut', [])
+=======
+angular.module('chart-donut', [])
+>>>>>>> Rename module to chart.donut
 
 .constant('chartDonutConfig', {
     pathColor: '5a8e2f',
@@ -39,7 +43,11 @@ angular.module('chart.donut', [])
             };
 
             if (typeof d3 !== 'object') {
+<<<<<<< HEAD
                 throw new Error('"chart.donut" requires a global d3 object');
+=======
+                throw new Error('"chart-donut" requires a global d3 object');
+>>>>>>> Rename module to chart.donut
             }
             var scale = d3.scale.linear().domain([0, 100]).range([0, 2 * Math.PI]);
 
