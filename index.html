@@ -41,9 +41,12 @@
 
           <p>A simple <code>&lt;donut-chart&gt;</code> directive for Angular built with D3.js</p>
           <h3>Installation</h3>
-          <p>
-            Use bower to download it <code>bower install angular-chart-donut</code> then include the script and the module as a dependency <code>angular.module('mymodule', ['chart.donut'])</code>.
-          </p>
+          <ul>
+              <li>You need to supply <code>window.d3</code> prior to the module</li>
+              <li><code>bower install angular-chart-donut</code></li>
+              <li><strong>or</strong> <code>npm install angular-chart-donut</code></li>
+              <li>Include as dependency <code>angular.module('mymodule', ['chart.donut'])</code></li>
+          </ul>
 
           <h3>Demo</h3>
           <div ng-app="DemoApp" ng-controller="DemoCtrl">
