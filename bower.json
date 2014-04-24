@@ -2,7 +2,8 @@
   "name": "angular-donut-chart",
   "version": "0.1.0",
   "authors": [
-    "Raymond Julin <raymond.julin@gmail.com>"
+    "Raymond Julin <raymond.julin@gmail.com>",
+    "Christian Leon Christensen <chrleon@gmail.com>"
   ],
   "description": "Donut chart directive for angular based on D3",
   "main": "src/donut.js",

@@ -19,3 +19,8 @@ angular.module('mymodule', ['chart.donut']);
 * `color` Optionally set a color. This can also be achieved through CSS overrides
 * `symbol` Defaults to `%` but can be set to other values, like empty string
 * `size`  Pixel size of chart, if not set the chart will attempt to size itself by its parent, but if parent does not have a size while the chart is rendered this will fail.
+
+### Contributors
+
+* [Raymond Julin](http://twitter.com/nervetattoo)
+* [Christian Leon Christensen](http://twitter.com/chrleon) — Design

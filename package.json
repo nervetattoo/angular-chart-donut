@@ -6,7 +6,10 @@
   "scripts": {
     "test": "karma start karma.config.js"
   },
-  "author": "Raymond Julin <raymond.julin@gmail.com>",
+  "author": "Raymond Julin <raymond.julin@gmail.com> (http://raymondjulin.com/)",
+  "contributors": [
+    "Christian Leon Christensen <chrleon@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
