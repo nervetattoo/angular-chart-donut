@@ -48,16 +48,34 @@
           <h3>Demo</h3>
           <div ng-app="DemoApp" ng-controller="DemoCtrl">
             <style scoped>
-              chart-donut {
+              .block {
                 display: block;
+              }
+              chart-donut {
                 text-align: center;
               }
             </style>
-            <chart-donut title="Demo" data="data" size=250></chart-donut>
+            <div class"block">
+              <chart-donut title="Demo" data="data" size="250"></chart-donut>
+              <chart-donut title="Another" data="data2" color="4ab" size="250"></chart-donut>
+            </div>
+
             <pre><code>
-              &lt;chart-donut title="Demo" data="{{data}}" size="250"&gt;
+              &lt;script&gt; var data = {{data}}, data2 = {{data2}}; &lt;/script&gt;
+              &lt;chart-donut title="Demo" data="data"&gt;
+              &lt;chart-donut title="Another" data="data2" color="4ab"&gt;
             </code></pre>
           </div>
+
+          <h3>Customisation</h3>
+          <p>There is a number of options you can pass as attributes to the element in order to customise the look and feel:</p>
+          <ul>
+            <li><strong>title</strong></li>
+            <li><strong>data</strong></li>
+            <li><strong>color</strong></li>
+            <li><strong>size</strong></li>
+            <li><strong>symbol</strong> (%)</li>
+          </ul>
         </section>
 
         <footer>
@@ -73,6 +91,7 @@
         .module('DemoApp', ['chart.donut'])
         .controller('DemoCtrl', function($scope, $window) {
           $scope.data = 10;
+          $scope.data2 = 80;
           var last;
           var step = function step(timestamp) {
             if (!last) last = timestamp;
@@ -81,6 +100,7 @@
               last = timestamp;
               $scope.$apply(function() {
               $scope.data = Math.round(Math.random() * 100);
+              $scope.data2 = Math.round(Math.random() * 100);
             });
             }
             $window.requestAnimationFrame(step);
