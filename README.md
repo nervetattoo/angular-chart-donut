@@ -1,11 +1,13 @@
 ## [Angular donut-chart](https://nervetattoo.github.io/angular-chart-donut)
 
-```html
-<chart-donut data="modeldata" title="Percentage awesomeness" size="150"></chart-donut>
-```
+* `bower install angular-chart-donut`
+* `npm install angular-chart-donut`
 
 ```js
 angular.module('mymodule', ['chart.donut']);
+```
+```html
+<chart-donut data="modeldata" title="Percentage awesomeness" size="150"></chart-donut>
 ```
 
 <img src="https://nervetattoo.github.io/angular-chart-donut/images/shot.png">
