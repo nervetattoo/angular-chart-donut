@@ -1,19 +1,19 @@
-describe('ng.donut-chart', function() {
+describe('chart.donut', function() {
     var mod;
     beforeEach(function() {
-        mod = angular.module('ng.donut-chart');
+        mod = angular.module('chart.donut');
     });
 
     it('exists', function() {
         expect(mod).not.toBe(null);
     });
 
-    describe('<donut-chart>', function() {
+    describe('<chart-donut>', function() {
         var el, scope;
 
-        beforeEach(module('ng.donut-chart'));
+        beforeEach(module('chart.donut'));
 
-        var html = '<div donut-chart data="percentage" size=150 title="Test"></div>';
+        var html = '<div chart-donut data="percentage" size=150 title="Test"></div>';
         beforeEach(inject(function($rootScope, $compile) {
             el = angular.element(html);
             scope = $rootScope;

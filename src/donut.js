@@ -1,4 +1,4 @@
-// Take a <donut-chart title="Foo" data="obj.percentage" color="#fff"></donut-chart>
+// Take a <chart-donut title="Foo" data="obj.percentage" color="#fff"></chart-donut>
 // and transform it into a d3-d svg chart like:
 // <svg>
 //   <g>
@@ -6,9 +6,9 @@
 //   </g>
 // </svg>
 
-angular.module('ng.donut-chart', [])
+angular.module('chart.donut', [])
 
-.constant('donutChartConfig', {
+.constant('chartDonutConfig', {
     pathColor: '5a8e2f',
     strokeColor: '#a39d8c',
     bgFillColor: '#f2f0d6',
@@ -16,7 +16,7 @@ angular.module('ng.donut-chart', [])
     punchoutStrokeColor: '#d2c194'
 })
 
-.directive('donutChart', ['donutChartConfig', function(donutChartConfig) {
+.directive('chartDonut', ['chartDonutConfig', function(config) {
     'use strict';
     return {
         restrict: 'EA',
@@ -30,7 +30,7 @@ angular.module('ng.donut-chart', [])
         link: function(scope, element, attrs) {
             var symbol = attrs.symbol || '%';
             var size = attrs.size || element[0].clientWidth;
-            var color = attrs.color || donutChartConfig.pathColor;
+            var color = attrs.color || config.pathColor;
             var ringSize = size / 20;
             var outer = size / 4;
 
@@ -39,7 +39,7 @@ angular.module('ng.donut-chart', [])
             };
 
             if (typeof d3 !== 'object') {
-                throw new Error("ng.donut-chart requires a global d3 object");
+                throw new Error('"chart.donut" requires a global d3 object');
             }
             var scale = d3.scale.linear().domain([0, 100]).range([0, 2 * Math.PI]);
 
@@ -69,10 +69,10 @@ angular.module('ng.donut-chart', [])
 
             var background = svg.append('circle').attr({
                 'class': 'background',
-                fill: donutChartConfig.bgFillColor,
-                stroke: donutChartConfig.strokeColor,
-                r: donutChartConfig.outerBounds,
-                transform: donutChartConfig.centerTransform
+                fill: config.bgFillColor,
+                stroke: config.strokeColor,
+                r: config.outerBounds,
+                transform: config.centerTransform
             });
 
             var middleLayer = svg.append('g').attr({transform: centerTransform});
@@ -80,8 +80,8 @@ angular.module('ng.donut-chart', [])
 
             var punchOut = middleLayer.append('path').attr({
                 'class': 'punch-out',
-                fill: donutChartConfig.punchoutFillColor,
-                stroke: donutChartConfig.punchoutStrokeColor,
+                fill: config.punchoutFillColor,
+                stroke: config.punchoutStrokeColor,
                 d: drawArc(outer - ringSize, outer, 0, 100)
             });
 
@@ -97,10 +97,10 @@ angular.module('ng.donut-chart', [])
                     y1: outerBounds,
                     x2: 0,
                     y2: cy,
-                    stroke: donutChartConfig.strokeColor
+                    stroke: config.strokeColor
                 });
                 dropPin.append('circle').attr({
-                    fill: donutChartConfig.strokeColor,
+                    fill: config.strokeColor,
                     cx: 0,
                     cy: cy,
                     r: r
@@ -113,7 +113,7 @@ angular.module('ng.donut-chart', [])
             }
 
             topLayer.append('circle').attr({
-                fill: donutChartConfig.bgFillColor,
+                fill: config.bgFillColor,
                 stroke: '#f9f9ec',
                 r: outer - ringSize
             });
