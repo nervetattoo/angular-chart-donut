@@ -1,16 +1,14 @@
 {
-  "name": "angular.donut-chart",
-  "version": "0.0.0",
+  "name": "angular-chart-donut",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/donut.js",
   "scripts": {
-    "test": "echo \"Error: no ng-d3-donuttest specified\" && exit 1"
+    "test": "karma start karma.config.js"
   },
   "author": "Raymond Julin <raymond.julin@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "gulp": "^3.6.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "karma": "^0.12.5",
     "karma-jasmine": "^0.1.5",
