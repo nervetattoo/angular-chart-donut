@@ -1,4 +1,3 @@
-angular.donut-chart
-===================
+## [Angular donut-chart](https://nervetattoo.github.io/angular.donut-chart)
 
-Donut chart directive for Angular
+<img src="https://nervetattoo.github.io/angular.donut-chart/images/shot.png">
